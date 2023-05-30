@@ -1,4 +1,5 @@
-<?php
+
+    <?php
 
 class InstructeurModel
 {
@@ -9,17 +10,15 @@ class InstructeurModel
         $this->db = new Database();
     }
 
-    public function getInstructeurs()
+    public function getExamens()
     {
-        $sql = "SELECT Id
-                      ,Voornaam
-                      ,Tussenvoegsel
-                      ,Achternaam
-                      ,Mobiel
-                      ,DatumInDienst
-                      ,AantalSterren
-                FROM  Instructeur
-                ORDER BY AantalSterren DESC";
+        $sql = "SELECT naamexaminator
+                      ,datumexamen
+                      ,rijbewijscategorie
+                      ,rijschool
+                      ,stad
+                      ,uitslagexamen
+                FROM  overzichtafgenomenexamensexaminatoren;
 
         $this->db->query($sql);
         return $this->db->resultSet();
@@ -66,5 +65,6 @@ class InstructeurModel
         $this->db->query($sql);
         return $this->db->single();
     }
+
 
 }

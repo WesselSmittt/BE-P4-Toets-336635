@@ -116,4 +116,40 @@ class Instructeur extends BaseController
         $this->view('Instructeur/overzichtrijles', $data);
 
     }
+
+    public function overzichtafgenomenexamens()
+    {
+        $result = $this->instructeurModel->getExamens();
+
+        //  var_dump($result);
+        $rows = "";
+        foreach ($result as $afgenomenexamens) {
+            /**
+             * Datum in het juiste formaat gezet
+             */
+            $date = date_create($afgenomenexamens->DatumInDienst);
+            $formatted_date = date_format($date, 'd-m-Y');
+
+            $rows .= "<tr>
+                        <td>$afgenomenexamens->Voornaam</td>
+                        <td>$afgenomenexamens->Tussenvoegsel</td>
+                        <td>$afgenomenexamens->Achternaam</td>
+                        <td>$afgenomenexamens->Mobiel</td>
+                        <td>$formatted_date</td>            
+                        <td>$afgenomenexamens->AantalSterren</td>            
+                        <td>
+                            <a href='" . URLROOT . "/instructeur/overzichtvoertuigen/$afgenomenexamens->Id'>
+                                <i class='bi bi-car-front'></i>
+                            </a>
+                        </td>            
+                      </tr>";
+        }
+        
+        $data = [
+            'title' => 'Afgenomen examens',
+            'rows' => $rows
+        ];
+    
+        $this->view('Instructeur/overzichtafgenomenexamens', $data);
+    }
 }
