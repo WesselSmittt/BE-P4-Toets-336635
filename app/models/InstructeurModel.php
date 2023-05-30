@@ -22,7 +22,7 @@ class InstructeurModel
 
         $this->db->query($sql);
         return $this->db->resultSet();
-    }
+    } 
 
     public function getToegewezenVoertuigen($Id)
     {
