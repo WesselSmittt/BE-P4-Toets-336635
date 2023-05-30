@@ -9,7 +9,6 @@
 </head>
 <body>
     <h3><?= $data['title']; ?></h3>
-    <a href="<?= URLROOT; ?>/Instructeur/overzichtinstructeur">Instructeurs in dienst</a><br><br>
-    <a href="<?= URLROOT; ?>/Instructeur/overzichtrijles">Overzicht Rijlespakketten Leerlingen</a> 
+    <a href="<?= URLROOT; ?>/Instructeur/overzichtrijles">Overzicht Afgenomen Examens Examinatoren</a> 
 </body>
 </html>
